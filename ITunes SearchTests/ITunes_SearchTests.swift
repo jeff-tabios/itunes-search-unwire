@@ -6,31 +6,26 @@
 //
 
 import XCTest
+import Combine
 @testable import ITunes_Search
 
 final class ITunes_SearchTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    // A Sample Test
+    func test_Get_Items_Data_Should_Get_Item() {
+        let client = SearchClient(service: MockService())
+        let sut = SearchViewModel(client: client)
+        var cancellables = Set<AnyCancellable>()
+        let exp = expectation(description: "Get data")
+        sut.search(term: "term")
+        sut.state
+            .sink { completion in
+                print(completion)
+            } receiveValue: { _ in
+                exp.fulfill()
+            }.store(in: &cancellables)
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        wait(for: [exp], timeout: 3)
+        XCTAssertEqual(sut.currentResults.count, 1)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

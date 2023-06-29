@@ -36,11 +36,33 @@ class SearchViewController: UIViewController {
     private func addObservables() {
         searchTextField.textPublisher
             .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
-            .sink(receiveValue: { text in
+            .sink(receiveValue: { [weak self] text in
                 print(text)
+                self?.viewModel.search(term: text)
             }).store(in: &subscriptions)
 
-        // TODO: Add subscriptions
+        viewModel.state
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    print(error)
+                case .finished:
+                    print("finished")
+                }
+            } receiveValue: { [weak self] state in
+                self?.handleState(state: state)
+            }.store(in: &subscriptions)
+    }
+
+    private func handleState(state: SearchState) {
+        switch state {
+        case .idle:
+            break
+        case .searching:
+            break
+        case .done:
+            searchResultsTableView.reloadData()
+        }
     }
 
     private func addSubviews() {
@@ -84,11 +106,12 @@ extension SearchViewController {
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return viewModel.currentResults.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultCell.identifier) as! SearchResultCell
+        cell.configure(song: viewModel.currentResults[indexPath.row])
         return cell
     }
 }

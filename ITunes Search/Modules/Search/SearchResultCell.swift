@@ -13,8 +13,6 @@ final class SearchResultCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
-        configure()
     }
 
     required init?(coder: NSCoder) {
@@ -23,12 +21,12 @@ final class SearchResultCell: UITableViewCell {
 }
 
 // MARK: Configuration
-private extension SearchResultCell {
-    func configure() {
+extension SearchResultCell {
+    func configure(song: Song) {
         songName.numberOfLines = 0
         songName.textAlignment = .center
         songName.lineBreakMode = .byWordWrapping
-        songName.text = "A SONG!!!!"
+        songName.text = song.trackName
 
         addSubview(songName)
         songName.translatesAutoresizingMaskIntoConstraints = false

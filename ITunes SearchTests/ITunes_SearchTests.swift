@@ -26,6 +26,6 @@ final class ITunes_SearchTests: XCTestCase {
             }.store(in: &cancellables)
 
         wait(for: [exp], timeout: 3)
-        XCTAssertEqual(sut.currentResults.count, 1)
+        XCTAssertEqual(sut.state.value.currentSongs.count, 1)
     }
 }

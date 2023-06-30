@@ -1,7 +1,7 @@
 # itunes-search-unwire
 ## Description
 Downloads and displays song data. 
-Allows searching and view details
+Allows searching and viewing details in table rows. 
 Built with example unit test with mock data.
 
 Used UIKit, MVVM and Combine

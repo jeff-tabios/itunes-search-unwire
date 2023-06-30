@@ -12,6 +12,15 @@ enum SearchState {
     case idle
     case searching
     case done(songs: [Song])
+
+    var currentSongs: [Song] {
+        switch self {
+        case .done(let songs):
+            return songs
+        default:
+            return []
+        }
+    }
 }
 
 protocol SearchViewProtocol {
@@ -24,15 +33,6 @@ final class SearchViewModel: SearchViewProtocol {
     let state = CurrentValueSubject<SearchState, Error>(.idle)
     private var searchCancellable: AnyCancellable?
 
-    var currentResults: [Song] {
-        switch state.value {
-        case .done(let songs):
-            return songs
-        default:
-            return []
-        }
-    }
-
     init(client: SearchClientProtocol = SearchClient()) {
         self.client = client
     }
@@ -42,7 +42,7 @@ final class SearchViewModel: SearchViewProtocol {
             state.send(.idle)
             return
         }
-        
+
         state.send(.searching)
         do {
             searchCancellable = try client.search(query: term)

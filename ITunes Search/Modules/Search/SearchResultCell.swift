@@ -29,6 +29,10 @@ extension SearchResultCell {
         songName.text = song.trackName
 
         addSubview(songName)
+        configureLayout()
+    }
+
+    func configureLayout() {
         songName.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([

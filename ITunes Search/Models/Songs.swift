@@ -18,13 +18,13 @@ struct Song: Codable {
     let artistName: String
     let trackName: String
     let artworkUrl100: String
-    let releaseDate: String
-    let trackExplicitness: String
-    let trackTimeMillis: Int
-    let country: String
-    let currency: String
-    let primaryGenreName: String
-    let isStreamable: Bool
+    let releaseDate: String?
+    let trackExplicitness: String?
+    let trackTimeMillis: Int?
+    let country: String?
+    let currency: String?
+    let primaryGenreName: String?
+    let isStreamable: Bool?
 
     enum CodingKeys: String, CodingKey {
         case artistName, trackName, artworkUrl100, releaseDate, trackExplicitness, trackTimeMillis, country, currency, primaryGenreName, isStreamable

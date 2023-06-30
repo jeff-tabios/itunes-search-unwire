@@ -21,6 +21,7 @@
 		BE34FE8D2A4DBA7000F4F57D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE34FE8C2A4DBA7000F4F57D /* NetworkService.swift */; };
 		BE34FE902A4DC36E00F4F57D /* SearchClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE34FE8F2A4DC36E00F4F57D /* SearchClient.swift */; };
 		BE34FE922A4E06CD00F4F57D /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE34FE912A4E06CD00F4F57D /* MockService.swift */; };
+		BE34FE942A4EDABB00F4F57D /* SearchInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE34FE932A4EDABB00F4F57D /* SearchInputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		BE34FE8C2A4DBA7000F4F57D /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BE34FE8F2A4DC36E00F4F57D /* SearchClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchClient.swift; sourceTree = "<group>"; };
 		BE34FE912A4E06CD00F4F57D /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
+		BE34FE932A4EDABB00F4F57D /* SearchInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				BE34FE502A4D63F600F4F57D /* SearchViewController.swift */,
 				BE34FE802A4D6A0200F4F57D /* SearchViewModel.swift */,
 				BE34FE882A4D781000F4F57D /* SearchResultCell.swift */,
+				BE34FE932A4EDABB00F4F57D /* SearchInputView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				BE34FE512A4D63F600F4F57D /* SearchViewController.swift in Sources */,
 				BE34FE4D2A4D63F600F4F57D /* AppDelegate.swift in Sources */,
 				BE34FE922A4E06CD00F4F57D /* MockService.swift in Sources */,
+				BE34FE942A4EDABB00F4F57D /* SearchInputView.swift in Sources */,
 				BE34FE902A4DC36E00F4F57D /* SearchClient.swift in Sources */,
 				BE34FE8D2A4DBA7000F4F57D /* NetworkService.swift in Sources */,
 				BE34FE872A4D770F00F4F57D /* UITextField+.swift in Sources */,

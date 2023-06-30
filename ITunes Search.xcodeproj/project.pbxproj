@@ -22,6 +22,8 @@
 		BE34FE902A4DC36E00F4F57D /* SearchClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE34FE8F2A4DC36E00F4F57D /* SearchClient.swift */; };
 		BE34FE922A4E06CD00F4F57D /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE34FE912A4E06CD00F4F57D /* MockService.swift */; };
 		BE34FE942A4EDABB00F4F57D /* SearchInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE34FE932A4EDABB00F4F57D /* SearchInputView.swift */; };
+		BE34FE962A4EED8200F4F57D /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE34FE952A4EED8200F4F57D /* UIImageView+.swift */; };
+		BE34FE982A4EF27700F4F57D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE34FE972A4EF27700F4F57D /* String+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		BE34FE8F2A4DC36E00F4F57D /* SearchClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchClient.swift; sourceTree = "<group>"; };
 		BE34FE912A4E06CD00F4F57D /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
 		BE34FE932A4EDABB00F4F57D /* SearchInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInputView.swift; sourceTree = "<group>"; };
+		BE34FE952A4EED8200F4F57D /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
+		BE34FE972A4EF27700F4F57D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,8 @@
 			children = (
 				BE34FE862A4D770F00F4F57D /* UITextField+.swift */,
 				BE34FE8A2A4D78C100F4F57D /* UITableViewCell+.swift */,
+				BE34FE952A4EED8200F4F57D /* UIImageView+.swift */,
+				BE34FE972A4EF27700F4F57D /* String+.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -277,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE34FE962A4EED8200F4F57D /* UIImageView+.swift in Sources */,
 				BE34FE892A4D781000F4F57D /* SearchResultCell.swift in Sources */,
 				BE34FE842A4D6B4100F4F57D /* Songs.swift in Sources */,
 				BE34FE512A4D63F600F4F57D /* SearchViewController.swift in Sources */,
@@ -288,6 +295,7 @@
 				BE34FE872A4D770F00F4F57D /* UITextField+.swift in Sources */,
 				BE34FE8B2A4D78C100F4F57D /* UITableViewCell+.swift in Sources */,
 				BE34FE812A4D6A0200F4F57D /* SearchViewModel.swift in Sources */,
+				BE34FE982A4EF27700F4F57D /* String+.swift in Sources */,
 				BE34FE4F2A4D63F600F4F57D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,6 +16,12 @@ class SearchViewController: UIViewController {
         SearchInputView()
     }()
 
+    lazy var stateResultLabel: UILabel = {
+        let stateResultLabel = UILabel()
+        stateResultLabel.textAlignment = .center
+        return stateResultLabel
+    }()
+
     lazy var searchResultsTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(SearchResultCell.self,
@@ -23,12 +29,14 @@ class SearchViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.keyboardDismissMode = .onDrag
+        tableView.allowsSelection = false
+        tableView.backgroundColor = .white
         return tableView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "Green")
 
         addSubviews()
         addObservables()
@@ -37,29 +45,26 @@ class SearchViewController: UIViewController {
     private func addObservables() {
         searchInputView.searchTextField.textPublisher
             .debounce(for: .seconds(1), scheduler: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] text in
-                print(text)
-                self?.viewModel.search(term: text)
-            }).store(in: &subscriptions)
+            .sink { [weak self] text in self?.viewModel.search(term: text) }
+            .store(in: &subscriptions)
 
         viewModel.state
             .sink { completion in
-                switch completion {
-                case .failure(let error):
-                    print(error)
-                case .finished:
-                    print("finished")
-                }
+                print(completion)
             } receiveValue: { [weak self] state in
                 self?.handleState(state: state)
             }.store(in: &subscriptions)
     }
 
     private func handleState(state: SearchState) {
+        stateResultLabel.text = ""
+        stateResultLabel.isHidden = true
         switch state {
         case .idle:
             searchResultsTableView.reloadData()
         case .searching:
+            stateResultLabel.text = "Searching..."
+            stateResultLabel.isHidden = false
             searchResultsTableView.reloadData()
         case .done:
             searchResultsTableView.reloadData()
@@ -69,14 +74,16 @@ class SearchViewController: UIViewController {
     private func addSubviews() {
         view.addSubview(searchInputView)
         view.addSubview(searchResultsTableView)
-        configureLayout()
+        view.addSubview(stateResultLabel)
+        configureSubviews()
     }
 }
 
 extension SearchViewController {
-    private func configureLayout() {
+    private func configureSubviews() {
         searchInputView.translatesAutoresizingMaskIntoConstraints = false
         searchResultsTableView.translatesAutoresizingMaskIntoConstraints = false
+        stateResultLabel.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             searchInputView.heightAnchor.constraint(greaterThanOrEqualToConstant: 60.0),
@@ -86,7 +93,10 @@ extension SearchViewController {
             searchResultsTableView.topAnchor.constraint(equalTo: searchInputView.bottomAnchor),
             searchResultsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             searchResultsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            searchResultsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            searchResultsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            stateResultLabel.topAnchor.constraint(equalTo: searchInputView.bottomAnchor, constant: 20),
+            stateResultLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stateResultLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
     }
 }
